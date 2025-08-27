@@ -10,7 +10,6 @@ export class CryptoPriceService {
   coin: string = 'bitcoin';
   currency: string = 'usd';
   days: string = '7';
-  private apiUrl: string = this.generateApiUrl();
 
   // Subject to notify when data is updated
   private dataUpdatedSubject = new BehaviorSubject<void>(undefined);
@@ -18,9 +17,11 @@ export class CryptoPriceService {
   constructor(private http: HttpClient) {}
 
   updateCryptoOptions(coin: string, currency: string, days: string) {
+
     this.coin = coin;
     this.currency = currency;
     this.days = days;
+    console.log(1, this.coin, this.currency, this.days);
     this.generateApiUrl();
 
     // Emit change to notify subscribers to refresh data
@@ -28,11 +29,12 @@ export class CryptoPriceService {
   }
 
   private generateApiUrl(): string {
+    console.log(this.coin, this.currency, this.days);
     return `https://api.coingecko.com/api/v3/coins/${this.coin}/market_chart?vs_currency=${this.currency}&days=${this.days}`;
   }
 
   getCryptoPriceData(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+    return this.http.get<any>(this.generateApiUrl());
   }
 
   // convert dataUpdatedSubject to observable for subscribing to data updates
