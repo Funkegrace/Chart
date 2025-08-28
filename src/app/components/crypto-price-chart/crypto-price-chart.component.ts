@@ -91,7 +91,7 @@ constructor(private cryptoPriceService: CryptoPriceService) {}
 
               data: prices, // Set the y-axis data as the extracted prices
 
-              borderColor: 'rgb(75, 192, 192)', // Line color
+              borderColor: '#4bc0c0', // Line color
 
               fill: false, // No fill under the line
 

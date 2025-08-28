@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="crypto-options">
     <form (ngSubmit)="onSubmit()">
-      <div>
+      <div class="label-select-holder">
         <label for="coin">Coin:</label>
         <select name="coin" id="coin" [(ngModel)]="coin">
           <option *ngFor="let coinOption of coinOptions" [value]="coinOption">
@@ -10,7 +10,7 @@
         </select>
       </div>
 
-      <div>
+      <div class="label-select-holder">
         <label for="currency">Currency:</label>
         <select name="currency" id="currency" [(ngModel)]="currency">
           <option
@@ -22,7 +22,7 @@
         </select>
       </div>
 
-      <div>
+      <div class="label-select-holder">
         <label for="days">Days:</label>
         <select name="days" id="days" [(ngModel)]="days">
           <option *ngFor="let daysOption of daysOptions" [value]="daysOption">
